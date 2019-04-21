@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
+import org.springframework.web.cors.CorsConfiguration
 
 const val twatterRealmName = "Twatter authentication"
 const val authority = "TWATTER_USER"
@@ -18,6 +19,7 @@ class SecurityConfig(private val entryPoint: EntryPoint,
 
     override fun configure(http: HttpSecurity) {
         http.csrf().disable()
+                .cors().configurationSource { CorsConfiguration().applyPermitDefaultValues() }.and()
                 .authorizeRequests()
                 .antMatchers("/api/**").hasAuthority(authority)
                 .and().httpBasic().realmName(twatterRealmName)
