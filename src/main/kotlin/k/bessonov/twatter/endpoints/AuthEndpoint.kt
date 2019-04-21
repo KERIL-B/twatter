@@ -1,5 +1,6 @@
 package k.bessonov.twatter.endpoints
 
+import k.bessonov.twatter.domain.LoginBody
 import k.bessonov.twatter.domain.User
 import k.bessonov.twatter.services.UsersService
 import k.bessonov.twatter.utils.responseFrom
@@ -14,4 +15,7 @@ class AuthEndpoint(private val service: UsersService) {
 
     @PostMapping
     fun register(@RequestBody user: User) = responseFrom { service.register(user) }
+
+    @PostMapping("/login")
+    fun login(@RequestBody request: LoginBody) = responseFrom { service.check(request) }
 }
