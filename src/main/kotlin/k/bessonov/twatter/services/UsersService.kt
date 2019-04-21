@@ -21,4 +21,6 @@ class UsersService(private val dao: UsersDao) {
         val pass = dao.getDetails(request.login, true)?.password
         if (pass != request.password) throw IllegalStateException("Access denied")
     }
+
+    fun search(search: String)= dao.search(search)
 }
