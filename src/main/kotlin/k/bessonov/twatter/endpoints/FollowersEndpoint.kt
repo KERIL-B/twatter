@@ -17,6 +17,6 @@ class FollowersEndpoint(private val service: FollowersService) {
     @PostMapping
     fun follow(@RequestBody userId: String) = responseFrom { service.follow(userId) }
 
-    @DeleteMapping
+    @PostMapping("/delete")
     fun unFollow(@RequestBody userId: String) = responseFrom { service.unfollow(userId) }
 }

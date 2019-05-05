@@ -11,7 +11,7 @@ class LikesEndpoint(private val service: LikesService) {
     @PostMapping
     fun like(@RequestBody messageId: String) = responseFrom { service.like(messageId) }
 
-    @DeleteMapping
+    @PostMapping("/delete")
     fun unlike(@RequestBody messageId: String) = responseFrom { service.unlike(messageId) }
 
     @GetMapping

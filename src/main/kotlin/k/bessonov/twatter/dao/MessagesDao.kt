@@ -26,6 +26,7 @@ class MessagesDao(private val jdbc: NamedParameterJdbcTemplate) {
             Message(rs.getString("id"),
                     rs.getString("text"),
                     rs.getTimestamp("time_key").toLocalDateTime(),
+                    rs.getString("user_id"),
                     rs.getString("login"),
                     rs.getInt("likes"),
                     rs.getBoolean("liked"))
